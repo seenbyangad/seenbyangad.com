@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Photographs and notes by Angad.">
+<meta property="og:title" content="Angad · Photographs">
+<meta property="og:description" content="Photographs and notes by Angad.">
+<meta property="og:image" content="https://seenbyangad.com/photos/01.jpg">
+<meta property="og:url" content="https://seenbyangad.com">
+<meta name="theme-color" content="#0d0e0d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d0e0d'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23e2a63a'/%3E%3C/svg%3E">
+<title>Angad · Photographs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* One dark look everywhere. Words up top, then a 3-column grid where a few photos take a 2x2 spot. */
+:root{
+  --bg:#0d0e0d; --fg:#e7e4dd; --muted:#8b8a84; --line:#262725; --accent:#e2a63a; --soft:#b4b1aa; --live:#6fdc8c; --veil:rgba(8,9,8,.95);
+  --display:"Instrument Serif", "Times New Roman", serif;
+  --body:"Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(16px,4vw,48px);padding-block:28px 64px}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+.mono{font:400 11.5px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+nav{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+nav .name{font:400 26px/1 var(--display)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav ul a:hover{color:var(--fg)}
+
+.intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(24px,6vw,96px);padding-block:clamp(56px,11vw,140px) clamp(48px,8vw,96px);border-bottom:1px solid var(--line)}
+.intro h1{font:400 clamp(38px,5.6vw,76px)/1.02 var(--display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.intro h1 em{color:var(--muted)}
+.about{display:grid;gap:18px;align-content:end;max-width:44ch}
+.about p{margin:0}
+.now{display:flex;align-items:center;gap:14px;padding-left:2px}
+.breath{position:relative;width:8px;height:8px;border-radius:50%;background:var(--live);flex:none;box-shadow:0 0 10px var(--live);animation:breathe 6s ease-in-out infinite}
+.breath::before,.breath::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--live);animation:ping 6s cubic-bezier(.2,.6,.3,1) infinite}
+.breath::after{animation-delay:3s}
+@keyframes breathe{0%,100%{opacity:.75;box-shadow:0 0 4px var(--live)}50%{opacity:1;box-shadow:0 0 14px var(--live)}}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.6);opacity:0}}
+
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-block:56px 20px}
+.head h2,.notes h2{font:italic 400 34px/1 var(--display);margin:0}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:dense;gap:clamp(8px,1.2vw,16px)}
+.grid figure{margin:0;display:grid;grid-template-rows:1fr auto;gap:8px;min-width:0}
+.grid figure.big{grid-column:span 2;grid-row:span 2}
+.grid button{all:unset;cursor:zoom-in;display:block;overflow:hidden;background:var(--line);aspect-ratio:3/2;width:100%;max-width:100%}
+.grid figure.big button{aspect-ratio:auto;height:100%}
+.grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.grid button:hover img{transform:scale(1.025)}
+
+.notes{padding-top:24px;margin-top:72px;border-top:1px solid var(--line)}
+.story-head{display:grid;gap:12px;padding-block:24px 48px;max-width:760px}
+.story-head h3{font:400 clamp(40px,6vw,72px)/1 var(--display);margin:0;text-wrap:balance}
+.story-head p{margin:0;color:var(--muted);max-width:52ch}
+.story{display:grid;gap:clamp(48px,7vw,88px)}
+.frame{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:clamp(20px,4vw,56px);align-items:end}
+.frame .pics{display:grid;gap:clamp(8px,1.2vw,16px);min-width:0}
+.frame .pics.pair{grid-template-columns:1fr 1fr}
+.frame img{width:100%;height:auto;display:block;cursor:zoom-in}
+.frame .pics.tall{justify-items:start}
+.frame .pics.tall img{width:min(100%,460px)}
+.frame .words{display:grid;gap:12px;min-width:0;max-width:44ch;padding-bottom:4px}
+.frame .words h4{font:italic 400 30px/1.1 var(--display);margin:0}
+.frame .words p{margin:0}
+.frame .words .n{color:var(--accent)}
+.latest{color:var(--fg);border-bottom:1px solid var(--line);justify-self:start}
+.latest:hover{border-color:var(--accent)}
+
+footer{padding-top:28px;border-top:1px solid var(--line)}
+
+#lb{position:fixed;inset:0;background:var(--veil);display:grid;grid-template-rows:auto 1fr auto;z-index:10;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+#lb[hidden]{display:none}
+#lb .bar{display:flex;justify-content:space-between;align-items:center}
+#lb button{all:unset;cursor:pointer;padding:8px 4px}
+#lb button:hover{color:var(--fg)}
+#lb .stage{display:grid;place-items:center;min-height:0}
+#lb img{max-width:100%;max-height:100%;object-fit:contain}
+#lb .nav{display:flex;justify-content:center;gap:40px}
+#lb[data-single="1"] .nav{visibility:hidden}
+
+@media (max-width:900px){ .intro{grid-template-columns:1fr} .about{max-width:56ch} .frame{grid-template-columns:1fr} .frame .words{max-width:58ch} }
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .grid figure.big{grid-column:auto;grid-row:auto}
+  .grid figure.big button{aspect-ratio:3/2;height:auto}
+  nav ul{gap:16px}
+  .intro{padding-block:56px 44px;gap:32px}
+  .intro h1{font-size:clamp(44px,12.5vw,58px);line-height:.98}
+  .about{gap:14px}
+  .about p{font-size:15px;line-height:1.55;color:var(--soft)}
+  .about .now,.about .latest{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){.breath,.breath::before,.breath::after{animation:none}.breath::before,.breath::after{display:none}.grid img{transition:none}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <nav>
+    <a class="name" href="#top" id="top">Angad</a>
+    <ul class="mono">
+      <li><a href="#photographs">Photographs</a></li>
+      <li><a href="#notes">Notes</a></li>
+    </ul>
+  </nav>
+
+  <!-- ✏️ INTRO TEXT: edit the words between the tags -->
+  <section class="intro">
+    <h1>I spent my twenties building apps that kept people on their phones. <em>This year I put mine down.</em></h1>
+    <div class="about">
+      <p>I grew up in Mumbai and studied in Toronto, where I spent six years building tech companies. I learned a lot, but I'd started measuring my days in business revenue.</p>
+      <p>So I recently stepped away to find out what it feels like when nothing needs to be optimised.</p>
+      <p>Since then I've trained as a yoga teacher, learned to sit still (mostly), and started carrying a camera everywhere. It makes me slow down and actually look.</p>
+      <!-- ✏️ WHERE YOU ARE: change the city -->
+      <p class="now mono"><span class="breath" aria-hidden="true"></span>Currently in Budapest</p>
+      <!-- ✏️ LATEST NOTE link -->
+      <a class="mono latest" href="#rishikesh">New note · 21 Days in Rishikesh ↓</a>
+    </div>
+  </section>
+
+  <div class="head" id="photographs">
+    <h2>Photographs</h2>
+    <!-- ✏️ SUBTITLE for the photo section -->
+    <span class="mono">Budapest · Autumn 2026</span>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <section class="notes" id="notes">
+    <div class="head" style="padding-block:32px 0">
+      <h2>Notes</h2>
+      <span class="mono">Things I want to remember</span>
+    </div>
+
+    <!-- ✏️ NOTE: each <div class="frame"> is one photo (or two) plus a little title and text. Copy a frame block to add another. -->
+    <article id="rishikesh">
+      <div class="story-head">
+        <span class="mono">Aug to Sep 2026 · Himalayan foothills · Photos by Claudia Mazzaferro</span>
+        <h3>21 Days in Rishikesh</h3>
+        <p>I went to do a yoga teacher training. I mostly remember the village, a guy who didn't talk for 105 days, and a motorbike.</p>
+      </div>
+      <div class="story">
+
+        <div class="frame">
+          <div class="pics"><img src="photos/notes/rishikesh-r01.jpg" alt="Garden and gazebo below misty green mountains" loading="lazy"></div>
+          <div class="words"><span class="mono n">01</span><h4>Why I went</h4>
+            <p>I'd recently finished up at my company Dippy AI and wrapped up my life in Toronto. I wanted a complete change of setting. After my first startup WOMBO I did a 10-day silent Vipassana retreat, so this time I wanted a totally different kind of reset. Three weeks of yoga in the Himalayas felt like the furthest thing from the life I'd been living.</p></div>
+        </div>
+
+        <div class="frame">
+          <div class="pics pair"><img src="photos/notes/rishikesh-r02.jpg" alt="Pink temple towers above the Ganges in Rishikesh" loading="lazy"><img src="photos/notes/rishikesh-r03.jpg" alt="Mist rolling over a hillside behind lamp posts" loading="lazy"></div>
+          <div class="words"><span class="mono n">02</span><h4>Where it was</h4>
+            <p>This is Rishikesh town. We were nowhere near it. The place was way up in the foothills, super secluded, and most mornings looked like this.</p></div>
+        </div>
+
+        <div class="frame">
+          <div class="pics"><img src="photos/notes/rishikesh-r04.jpg" alt="The yoga hall during a break" loading="lazy"></div>
+          <div class="words"><span class="mono n">03</span><h4>A total noob</h4>
+            <p>Honestly, I was really noob at yoga. I'd done it every day for about a week before showing up, and two sessions a day had me pretty cooked within the first few days. So I stopped trying to be good at it and just treated it as 21 days of intro to yoga.</p></div>
+        </div>
+
+        <div class="frame">
+          <div class="pics tall"><img src="photos/notes/rishikesh-r05.jpg" alt="Sunlit waterfall over mossy rock" loading="lazy"></div>
+          <div class="words"><span class="mono n">04</span><h4>Sneaking out</h4>
+            <p>Every chance I got, I'd sneak out to explore the hills and the village nearby. Pretty sure I snuck out more than anyone on the course and got a bit of a reputation for it. I did stay from start to finish though, for the record.</p></div>
+        </div>
+
+        <div class="frame">
+          <div class="pics"><img src="photos/notes/rishikesh-r06.jpg" alt="A woman planting in a village field" loading="lazy"></div>
+          <div class="words"><span class="mono n">05</span><h4>The village</h4>
+            <p>The village was the best part. It's been there for centuries. One water source for everyone, fully vegetarian, and they grow most of what they eat. I made friends with a few of the villagers and they told me they barely need to spend money on anything. They seemed really happy, and the place was really clean.</p></div>
+        </div>
+
+        <div class="frame">
+          <div class="pics tall"><img src="photos/notes/rishikesh-r07.jpg" alt="An elderly woman smiling with her hands in namaste" loading="lazy"></div>
+          <div class="words"><span class="mono n">06</span><h4>"Hey son, be careful"</h4>
+            <p>It was insane watching 85-year-old women farm and carry water home in the rain on slippery paths. I met her on one of those mornings. She had a pot of water on her head and stopped to tell me, "Hey son, be careful, you might slip." Pretty sure I should've been the one saying that to her.</p></div>
+        </div>
+
+        <div class="frame">
+          <div class="pics"><img src="photos/notes/rishikesh-r08.jpg" alt="Five men in white kurtas on a bridge in the mountains" loading="lazy"></div>
+          <div class="words"><span class="mono n">07</span><h4>Chaitanya</h4>
+            <p>Some of the teachers and guys from the course. I spent a lot of time with Chaitanya, a former Vipassana teacher who'd just done 105 days in silence. I told him I'd been having a few sleepless nights since leaving Toronto and the company. He said, "Angad, that's normal. It's basically a breakup, your body reacts. It'd be weird if you didn't have them." Funny enough, once he said that, I started sleeping way better.</p></div>
+        </div>
+
+        <div class="frame">
+          <div class="pics"><img src="photos/notes/rishikesh-r09.jpg" alt="Sitting on a Royal Enfield looking at misty mountains" loading="lazy"></div>
+          <div class="words"><span class="mono n">08</span><h4>Day off</h4>
+            <p>On our day off I met this guy at a café. Young dude, solo traveler, had seen a lot of the country. We both rented Royal Enfields, and I'd never ridden a motorbike before. We spent the whole day riding around the Himalayas in the rain. He was so generous and kind, and it was honestly one of the most freeing days of my life. We just had the best adventure.</p></div>
+        </div>
+
+      </div>
+    </article>
+  </section>
+
+  <footer class="mono">Angad · 2026</footer>
+</div>
+
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="bar mono"><span id="lbmeta"></span><button id="lbclose" type="button">Close</button></div>
+  <div class="stage"><img id="lbimg" alt=""></div>
+  <div class="nav mono"><button id="lbprev" type="button">Prev</button><button id="lbnext" type="button">Next</button></div>
+</div>
+
+<script>
+/* ✏️ PHOTOS
+   1. Put the photo file in the "photos" folder.
+   2. Add its file name to this list, in the order you want them shown.
+   3. Add " big" after a name to make that photo large (about 1 in every 4 looks best). */
+const PHOTOS = `
+01.jpg big
+02.jpg
+03.jpg
+04.jpg
+05.jpg big
+06.jpg
+07.jpg
+08.jpg
+09.jpg
+10.jpg big
+11.jpg
+12.jpg
+13.jpg big
+14.jpg
+15.jpg
+`;
+
+/* You don't need to touch anything below this line. */
+const list = PHOTOS.trim().split("\n").map(l => l.trim()).filter(Boolean).map(l => ({ file: l.split(/\s+/)[0], big: /\bbig\b/.test(l) }));
+const pad = n => String(n).padStart(2, "0");
+const grid = document.getElementById("grid");
+list.forEach((p, i) => {
+  const f = document.createElement("figure");
+  if (p.big) f.className = "big";
+  f.innerHTML = `<button type="button" aria-label="Open photo ${i + 1}"><img src="photos/${p.file}" alt="" loading="${i < 4 ? "eager" : "lazy"}"></button><figcaption class="mono">${pad(i + 1)}</figcaption>`;
+  f.querySelector("button").onclick = () => openAt(i);
+  grid.appendChild(f);
+});
+const lb = document.getElementById("lb"), img = document.getElementById("lbimg"), meta = document.getElementById("lbmeta");
+let cur = 0;
+function show(i) { cur = (i + list.length) % list.length; img.src = "photos/" + list[cur].file; meta.textContent = pad(cur + 1) + " / " + pad(list.length); }
+function openAt(i) { show(i); lb.dataset.single = ""; lb.hidden = false; document.getElementById("lbclose").focus(); }
+function close() { lb.hidden = true; }
+document.getElementById("lbclose").onclick = close;
+document.getElementById("lbprev").onclick = () => show(cur - 1);
+document.getElementById("lbnext").onclick = () => show(cur + 1);
+lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("stage")) close(); });
+document.addEventListener("keydown", e => { if (lb.hidden) return; if (e.key === "Escape") close(); if (lb.dataset.single === "1") return; if (e.key === "ArrowRight") show(cur + 1); if (e.key === "ArrowLeft") show(cur - 1); });
+document.querySelectorAll(".frame img").forEach(el => el.addEventListener("click", () => { img.src = el.src; meta.textContent = ""; lb.hidden = false; lb.dataset.single = "1"; document.getElementById("lbclose").focus(); }));
+let x0 = null;
+lb.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50 && lb.dataset.single !== "1") show(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+</script>
+
+</body>
+</html>
